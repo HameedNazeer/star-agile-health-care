@@ -14,7 +14,7 @@ resource "aws_instance" "kube-server" {
    }
 
   tags = {
-    name = "kube-server"
+    Name = "kube-server"
    }
 
  provisioner "remote-exec" {
