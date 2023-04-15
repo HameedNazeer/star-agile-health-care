@@ -105,7 +105,7 @@ resource "aws_eip_association" "eip-association" {
 # Ec2 Instance
 resource "aws_instance" "kube_server" {
   ami           = "ami-02eb7a4783e7e9317"
-  availability_zone = "ap-south-1c"
+ # availability_zone = "ap-south-1c"
   instance_type = "t2.medium"
   key_name      = "mumbaikey"
     root_block_device {
