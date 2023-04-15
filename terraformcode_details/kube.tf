@@ -105,7 +105,7 @@ resource "aws_eip_association" "eip-association" {
 # Ec2 Instance
 resource "aws_instance" "demo" {
   ami           = "ami-02eb7a4783e7e9317"
-  instance_type = "t2.large"
+  instance_type = "t2.medium"
   key_name      = "mumbaikey"
     root_block_device {
       volume_size = 20
