@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "ap-south-1a"
+  region = "ap-south-1"
 }
 # Network setup
 # Create a VPC
@@ -103,16 +103,17 @@ resource "aws_eip_association" "eip-association" {
 }
 
 # Ec2 Instance
-resource "aws_instance" "demo" {
+resource "aws_instance" "kube_server" {
   ami           = "ami-02eb7a4783e7e9317"
-  instance_type = "t2.medium"
+  availability_zone = "ap-south-1b"
+  instance_type = "t2.large"
   key_name      = "mumbaikey"
     root_block_device {
       volume_size = 20
       volume_type = "gp2"
    }
   tags = {
-    Name = "TerraformDemoInstance"
+    Name = "Kube_server"
   }
   network_interface {
     device_index         = 0
