@@ -94,7 +94,7 @@ resource "aws_network_interface" "my-ni" {
 
 # Elastic IP
 data "aws_eip" "eip-ni" {
-  id = "eipalloc-055af21d18e460de8"
+  id = "eipalloc-040108050ddbabbb5"
 }
 resource "aws_eip_association" "eip-association" {
   allocation_id        = data.aws_eip.eip-ni.id
@@ -105,7 +105,7 @@ resource "aws_eip_association" "eip-association" {
 # Ec2 Instance
 resource "aws_instance" "kube_server" {
   ami           = "ami-02eb7a4783e7e9317"
-  availability_zone = "ap-south-1b"
+  availability_zone = "ap-south-1c"
   instance_type = "t2.large"
   key_name      = "mumbaikey"
     root_block_device {
