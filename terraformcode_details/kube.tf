@@ -94,7 +94,7 @@ resource "aws_network_interface" "my-ni" {
 
 # Elastic IP
 data "aws_eip" "eip-ni" {
-  id = "eipalloc-059c4c818a3989dc4"
+  id = "eipalloc-055af21d18e460de8"
 }
 resource "aws_eip_association" "eip-association" {
   allocation_id        = data.aws_eip.eip-ni.id
