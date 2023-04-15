@@ -99,14 +99,14 @@ data "aws_eip" "eip-ni" {
 resource "aws_eip_association" "eip-association" {
   allocation_id        = data.aws_eip.eip-ni.id
   network_interface_id = aws_network_interface.my-ni.id
-  #instance = aws_instance.demo.id
+  instance = aws_instance.kube_server.id
 }
 
 # Ec2 Instance
 resource "aws_instance" "kube_server" {
   ami           = "ami-02eb7a4783e7e9317"
  # availability_zone = "ap-south-1c"
-  instance_type = "t2.medium"
+  instance_type = "t2.large"
   key_name      = "mumbaikey"
     root_block_device {
       volume_size = 20
