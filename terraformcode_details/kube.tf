@@ -48,10 +48,10 @@ resource "aws_route_table_association" "a" {
 # Security Group
 resource "aws_security_group" "my-sg" {
   vpc_id = aws_vpc.my-vpc.id
-  ingress {
+   ingress {
     from_port   = 0
     to_port     = 0
-    protocol    = -1
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
@@ -94,18 +94,17 @@ resource "aws_network_interface" "my-ni" {
 
 # Elastic IP
 data "aws_eip" "eip-ni" {
-  id = "eipalloc-040108050ddbabbb5"
+  id = "eipalloc-08ff496a9afdcbf2c"
 }
 resource "aws_eip_association" "eip-association" {
   allocation_id        = data.aws_eip.eip-ni.id
   network_interface_id = aws_network_interface.my-ni.id
-  instance = aws_instance.kube_server.id
+  #instance = aws_instance.demo.id
 }
 
 # Ec2 Instance
-resource "aws_instance" "kube_server" {
+resource "aws_instance" "demo" {
   ami           = "ami-02eb7a4783e7e9317"
- # availability_zone = "ap-south-1c"
   instance_type = "t2.large"
   key_name      = "mumbaikey"
     root_block_device {
@@ -113,7 +112,7 @@ resource "aws_instance" "kube_server" {
       volume_type = "gp2"
    }
   tags = {
-    Name = "Kube_server"
+    Name = "TerraformDemoInstance"
   }
   network_interface {
     device_index         = 0
